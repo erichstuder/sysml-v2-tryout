@@ -1,0 +1,13 @@
+{
+    "name": "pilot",
+    "dockerComposeFile": "${localWorkspaceFolder}/pilot/docker-compose.yml",
+    "service": "main",
+    "workspaceFolder": "/home/${localEnv:USER}/project/pilot",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.shell.linux": "/bin/bash"
+            }
+        }
+    }
+}
