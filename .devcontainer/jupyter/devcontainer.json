@@ -1,0 +1,13 @@
+{
+    "name": "jupyter",
+    "dockerComposeFile": "${localWorkspaceFolder}/jupyter/docker-compose.yml",
+    "service": "main",
+    "workspaceFolder": "/home/${localEnv:USER}/project/jupyter",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.shell.linux": "/bin/bash"
+            }
+        }
+    }
+}
