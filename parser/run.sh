@@ -18,4 +18,10 @@ else
     gradle compileJava > /dev/null 2>&1
 fi
 
-java -cp build/classes/java/main Parser
+INTERACTIVE="/SysML-v2-Pilot-Implementation/org.omg.sysml.interactive/target/org.omg.sysml.interactive-0.54.0-SNAPSHOT-all.jar"
+
+echo running the program...
+echo ""
+java -cp "build/classes/java/main:$INTERACTIVE" Parser
+echo ""
+echo ...done

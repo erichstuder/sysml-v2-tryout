@@ -1,5 +1,5 @@
 {
-    "name": "SysML v2 Development Environment",
+    "name": "parser",
     "build": {
         "dockerfile": "Dockerfile"
     },
