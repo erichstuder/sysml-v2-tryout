@@ -5,9 +5,11 @@ import java.util.List;
 import org.omg.sysml.interactive.SysMLInteractive;
 import org.omg.sysml.interactive.SysMLInteractiveResult;
 import org.omg.sysml.interactive.VizResult;
+// import org.omg.sysml.interactive.VizResult;
 // import org.omg.sysml.interactive.Resource;
+import org.omg.sysml.lang.sysml.Element;
 
-import java.util.Collections;
+// import java.util.Collections;
 // import java.util.List;
 
 public class Parser {
@@ -15,9 +17,26 @@ public class Parser {
         System.out.println("Hello, World! \n");
 
         SysMLInteractive sysml = SysMLInteractive.getInstance();
-        SysMLInteractiveResult result = sysml.process(
-            "package myRoot { " +
-            "}", true);
+        // SysMLInteractiveResult result = sysml.process(
+        //     // "package P {part definition PD {} part p is a PD {} }", true);
+        //     "package myRoot { \n" +
+        //             "part test {} \n" +
+        //             "}",
+        //     true);
+
+        sysml.next(".sysml");
+        try {
+            sysml.parse(
+                "package myRoot {" +
+                    "part test {}" +
+                "}");
+        } catch (Exception e) {
+            sysml.removeResource();
+            System.out.println(new SysMLInteractiveResult(e));
+        }
+        Element rootElement = sysml.getRootElement();
+        SysMLInteractiveResult result = new SysMLInteractiveResult(rootElement, Collections.emptyList());
+        sysml.addResourceToIndex(sysml.getResource());
 
         System.out.println("syntax: " + result.getSyntaxErrors());
         System.out.println("semantic: " + result.getSemanticErrors());
@@ -28,6 +47,6 @@ public class Parser {
 
         System.out.println("resources: " + sysml.getInputResources().getFirst().getURI());
         VizResult viz_result = sysml.viz(Collections.singletonList("myRoot"), Collections.emptyList(), Collections.emptyList(), Collections.emptyList());
-        System.out.println("viz_result: " + viz_result);
+        System.out.println("\n\n\nsvg:\n " + viz_result.getSVG());
     }
 }
