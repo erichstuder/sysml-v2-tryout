@@ -1,7 +1,9 @@
 FROM mcr.microsoft.com/devcontainers/java:21-jdk-bookworm
 
 RUN apt-get update && apt-get install -y \
-    tig
+    tig \
+    libfontconfig1 libfreetype6 libx11-6 libxau6 libxdmcp6 libxcb1 libxext6 libxrender1 libxtst6 libxi6 \
+    graphviz
 
 # Install gradle that way as sdk is not accessible here and apt-get installs a very old version which leads to problems.
 ENV GRADLE_VERSION=9.2.1

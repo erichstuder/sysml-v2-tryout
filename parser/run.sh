@@ -11,17 +11,21 @@ if [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]; then
     exit 0
 fi
 
+
+
 if [[ "$1" == "-v" ]]; then
-    gradle compileJava
+    gradle processResources --configuration-cache
+    gradle compileJava --configuration-cache
     echo ""
 else
-    gradle compileJava > /dev/null 2>&1
+    gradle processResources --configuration-cache > /dev/null 2>&1
+    gradle compileJava --configuration-cache > /dev/null 2>&1
 fi
 
 INTERACTIVE="/SysML-v2-Pilot-Implementation/org.omg.sysml.interactive/target/org.omg.sysml.interactive-0.54.0-SNAPSHOT-all.jar"
 
 echo running the program...
 echo ""
-java -cp "build/classes/java/main:$INTERACTIVE" Parser
+java -cp "build/classes/java/main:build/resources/main:$INTERACTIVE" Parser
 echo ""
 echo ...done
