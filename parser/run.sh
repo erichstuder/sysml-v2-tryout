@@ -22,7 +22,7 @@ else
     gradle compileJava --configuration-cache > /dev/null 2>&1
 fi
 
-INTERACTIVE="/SysML-v2-Pilot-Implementation/org.omg.sysml.interactive/target/org.omg.sysml.interactive-0.54.0-SNAPSHOT-all.jar"
+INTERACTIVE="/SysML-v2-Pilot-Implementation/org.omg.sysml.interactive/target/org.omg.sysml.interactive-0.55.0-SNAPSHOT-all.jar"
 
 echo running the program...
 echo ""

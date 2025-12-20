@@ -15,6 +15,7 @@ RUN wget https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.
 ENV PATH="/opt/gradle/bin:${PATH}"
 
 WORKDIR /
-RUN git clone https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation.git
-RUN cd SysML-v2-Pilot-Implementation && \
+RUN git clone https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation.git && \
+    cd SysML-v2-Pilot-Implementation && \
+    git checkout 433a8595d4843335107f8f1956a0396da512c5ba && \
     ./mvnw clean install
